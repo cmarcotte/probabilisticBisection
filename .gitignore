@@ -1,0 +1,42 @@
+.DS_Store
+
+# Julia compiled packages
+.julia/
+
+# Julia project environments (these can get large and are re-creatable)
+**/Manifest.toml
+
+# VSCode settings and caches
+.vscode/
+*.code-workspace
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Julia REPL history
+.history
+
+# Temporary files
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.jl.prof
+*.jl.gcov
+
+# Build artifacts
+deps/
+build/
+
+# Test outputs
+*.jld*
+*.h5
+*.out
+*.log
+
+# Backup files
+*~
+*.bak
