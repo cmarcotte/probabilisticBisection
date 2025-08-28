@@ -98,14 +98,20 @@
                   @test !(q ≈ r)
                   @test !probabilisticBisection.converged(𝒻, q; reltol=T(2.0^-3), abstol=zero(T))
                   for n in 1:6
-                     x = probabilisticBisection.median(𝒻)
-                     z = Z(x)
-                     probabilisticBisection.update!(𝒻, p, x, z)
+                     q = probabilisticBisection.median(𝒻)
+                     z = Z(q)
+                     probabilisticBisection.update!(𝒻, p, q, z)
                   end
                   q = probabilisticBisection.median(𝒻)
                   @test isapprox(q, r; atol=zero(T), rtol=T(2.0^-3))
                   @test probabilisticBisection.converged(𝒻, q; reltol=T(2.0^-3), abstol=zero(T))
                   𝒻 = SparseDistribution(T[a, b])
+                  q, 𝒻′ = probabilisticBisection.bisection!(Z, 𝒻, p; reltol=one(T), abstol=zero(T))
+                  @test isapprox(q, r; rtol=one(T), atol=zero(T))
+                  x::Vector{T} = T[a, rand(T, 1023)..., b]
+                  sort!(x)
+                  y::Vector{T} = map(x -> exp(-T(16.0) * (x - r)^2), T(1 // 2) .* (x[begin:end-1] .+ x[begin+1:end]))
+                  𝒻 = SparseDistribution(x, y)
                   q, 𝒻′ = probabilisticBisection.bisection!(Z, 𝒻, p; reltol=one(T), abstol=zero(T))
                   @test isapprox(q, r; rtol=one(T), atol=zero(T))
                end
@@ -124,14 +130,20 @@
                   @test !(q ≈ r)
                   @test !probabilisticBisection.converged(𝒻, q; reltol=T(2.0^-3), abstol=zero(T))
                   for n in 1:129
-                     x = probabilisticBisection.median(𝒻)
-                     z = Z(x)
-                     probabilisticBisection.update!(𝒻, p, x, z)
+                     q = probabilisticBisection.median(𝒻)
+                     z = Z(q)
+                     probabilisticBisection.update!(𝒻, p, q, z)
                   end
                   q = probabilisticBisection.median(𝒻)
                   @test isapprox(q, r; atol=zero(T), rtol=T(2.0^-3))
                   @test probabilisticBisection.converged(𝒻, q; reltol=T(2.0^-3), abstol=zero(T))
                   𝒻 = SparseDistribution(T[a, b])
+                  q, 𝒻′ = probabilisticBisection.bisection!(Z, 𝒻, p; reltol=one(T), abstol=zero(T))
+                  @test isapprox(q, r; rtol=one(T), atol=zero(T))
+                  x::Vector{T} = T[a, rand(T, 1023)..., b]
+                  sort!(x)
+                  y::Vector{T} = map(x -> exp(-T(16.0) * (x - r)^2), T(1 // 2) .* (x[begin:end-1] .+ x[begin+1:end]))
+                  𝒻 = SparseDistribution(x, y)
                   q, 𝒻′ = probabilisticBisection.bisection!(Z, 𝒻, p; reltol=one(T), abstol=zero(T))
                   @test isapprox(q, r; rtol=one(T), atol=zero(T))
                end
