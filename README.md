@@ -18,12 +18,12 @@ $$
 	f(y | x_i) =
 		\begin{cases}
 			\begin{cases}
-				p f(y)/\gamma(y), &y \geq x_i \\
-				(1 - p) f(y) / \gamma(y), &y < x_i \\
+				p f(y)/\gamma(x_i), &y \geq x_i \\
+				(1 - p) f(y) / \gamma(x_i), &y < x_i \\
 			\end{cases} &z_i = 1, \\
 			\begin{cases}
-				(1 - p) f(y) / (1 - \gamma(y), &y \geq x_i\\
-				p f(y) / (1 - \gamma(y)), &y < x_i
+				(1 - p) f(y) / (1 - \gamma(x_i), &y \geq x_i\\
+				p f(y) / (1 - \gamma(x_i)), &y < x_i
 			\end{cases} &z_i = 0,
 		\end{cases}
 $$
