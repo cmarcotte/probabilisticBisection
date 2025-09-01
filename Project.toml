@@ -1,4 +1,4 @@
-name = "probabilisticBisection"
+name = "ProbabilisticBisection"
 uuid = "b5070372-cb8e-4794-a866-e260982f6ebc"
 authors = ["Christopher Marcotte <christopher.marcotte@durham.ac.uk>"]
 version = "0.1.0"
